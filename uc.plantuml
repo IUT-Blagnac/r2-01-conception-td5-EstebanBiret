@@ -1,0 +1,36 @@
+@startuml exercice
+
+usecase a as "emploie"
+usecase b as "gère les chantiers et affecte les artisans à ces derniers"
+usecase c as "calcule la paye des artisans "
+
+actor Entreprise
+actor Direction
+actor RH
+
+Entreprise -> a
+RH -> c
+a -> RH
+a -> Direction
+Direction -> b
+c -[hidden]-> b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
