@@ -1,0 +1,40 @@
+@startuml exercice 2
+
+Class Direction {
+
+    String nom
+    String prenom
+    int age
+}
+
+Class RH {
+
+    String nom
+    String prenom
+    int age
+}
+
+Class Artisan {
+    
+    String nom
+    String prenom
+    int age
+    Double SalaireHoraire
+    Double Coordonnées
+}
+
+Class Chantier {
+
+    Date DateDeb
+    Date DateFin
+    String Adresse
+}
+
+Direction ->  "gérer" Artisan
+Artisan -> "travaille " Chantier
+RH -> "calcule la paye" Artisan
+Direction -> "gère et leurs affecte des artisans" Chantier
+
+
+
+@enduml
