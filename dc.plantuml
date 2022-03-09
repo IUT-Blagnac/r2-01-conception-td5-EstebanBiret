@@ -1,40 +1,75 @@
-@startuml exercice 2
+@startuml Diagramme de classe 
 
-Class Direction {
+hide circle
+hide empty members
+hide empty methods
 
-    String nom
-    String prenom
-    int age
+skinparam classAttributeIconSize 0
+
+skinparam roundcorner 5
+
+skinparam class {
+	BackgroundColor AliceBlue
+	BorderColor DarkSlateGray
+	ArrowColor Black
+	FontColor Black
+	FontSize 12
+	FontName Helvetica
+}
+
+skinparam arrow {
+    MessageAlign center
+}
+
+Class Directeur {
+
+    - IdDirection : string
+
 }
 
 Class RH {
 
-    String nom
-    String prenom
-    int age
+    - IdRH : string
+    + getPayeArtisan ()
+
 }
 
 Class Artisan {
     
-    String nom
-    String prenom
-    int age
-    Double SalaireHoraire
-    Double Coordonnées
+    - IdArtisan : string
+    - SalaireHoraire: double
+    - Coordonnées : string
+    + getChantier ()
+    + setChantier ()
 }
 
 Class Chantier {
 
-    Date DateDeb
-    Date DateFin
-    String Adresse
+    - IdChantier : string
+    - DateDeb : date
+    - DateFin : date
+    - Adresse : string
+    + getNbArtisans ()
 }
 
-Direction ->  "gérer" Artisan
-Artisan -> "travaille " Chantier
-RH -> "calcule la paye" Artisan
-Direction -> "gère et leurs affecte des artisans" Chantier
+Class Entreprise {
 
+    -IdEntreprise : string
+    -TailleEntreprise : int
+    + getDirecteur ()
+    + getRH ()
+    + getArtisans ()
+
+}
+
+
+Entreprise "1" -- "*" Artisan : emploie
+Entreprise "1" -- "1" Directeur : emploie
+Entreprise "1" -- "1" RH : emploie
+Artisan "*"-- "1" Chantier : travaille
+RH "1"-- "*" Artisan : gère et calcule la paye
+Directeur "1"-- "*" Chantier : affecte des artisans
+Directeur "1"-- "*" Chantier : gère
 
 
 @enduml

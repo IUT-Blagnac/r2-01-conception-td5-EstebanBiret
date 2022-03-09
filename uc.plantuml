@@ -1,36 +1,19 @@
-@startuml exercice
+@startuml Diagramme du UseCase
 
 usecase a as "emploie"
 usecase b as "gère les chantiers et affecte les artisans à ces derniers"
-usecase c as "calcule la paye des artisans "
+usecase c as "gère et calcule la paye des artisans "
 
 actor Entreprise
-actor Direction
+actor Directeur
 actor RH
 
 Entreprise -> a
 RH -> c
 a -> RH
-a -> Direction
-Direction -> b
+a -> Directeur
+Directeur -> b
+
 c -[hidden]-> b
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @enduml
