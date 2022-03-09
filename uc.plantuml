@@ -1,0 +1,19 @@
+@startuml Diagramme du UseCase
+
+usecase a as "emploie"
+usecase b as "gère les chantiers et affecte les artisans à ces derniers"
+usecase c as "gère et calcule la paye des artisans "
+
+actor Entreprise
+actor Directeur
+actor RH
+
+Entreprise -> a
+RH -> c
+a -> RH
+a -> Directeur
+Directeur -> b
+
+c -[hidden]-> b
+
+@enduml

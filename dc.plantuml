@@ -1,0 +1,75 @@
+@startuml Diagramme de classe 
+
+hide circle
+hide empty members
+hide empty methods
+
+skinparam classAttributeIconSize 0
+
+skinparam roundcorner 5
+
+skinparam class {
+	BackgroundColor AliceBlue
+	BorderColor DarkSlateGray
+	ArrowColor Black
+	FontColor Black
+	FontSize 12
+	FontName Helvetica
+}
+
+skinparam arrow {
+    MessageAlign center
+}
+
+Class Directeur {
+
+    - IdDirection : string
+
+}
+
+Class RH {
+
+    - IdRH : string
+    + getPayeArtisan ()
+
+}
+
+Class Artisan {
+    
+    - IdArtisan : string
+    - SalaireHoraire: double
+    - Coordonnées : string
+    + getChantier ()
+    + setChantier ()
+}
+
+Class Chantier {
+
+    - IdChantier : string
+    - DateDeb : date
+    - DateFin : date
+    - Adresse : string
+    + getNbArtisans ()
+}
+
+Class Entreprise {
+
+    -IdEntreprise : string
+    -TailleEntreprise : int
+    + getDirecteur ()
+    + getRH ()
+    + getArtisans ()
+
+}
+
+
+Entreprise "1" -- "*" Artisan : emploie
+Entreprise "1" -- "1" Directeur : emploie
+Entreprise "1" -- "1" RH : emploie
+Artisan "*"-- "1" Chantier : travaille
+RH "1"-- "*" Artisan : gère et calcule la paye
+Directeur "1"-- "*" Chantier : affecte des artisans
+Directeur "1"-- "*" Chantier : gère
+
+
+@enduml
